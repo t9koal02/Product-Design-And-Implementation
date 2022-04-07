@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "327198659484",
+    "firebase_url": "https://project-tvt20kmo-r2-default-rtdb.firebaseio.com",
+    "project_id": "project-tvt20kmo-r2",
+    "storage_bucket": "project-tvt20kmo-r2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327198659484:android:725e061db3e5683adbee59",
+        "android_client_info": {
+          "package_name": "project.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327198659484-ltk6fhp8e2043go7u3cpd1r79dttj99p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ_wrdfJc9JcqB0MfStKgRj1GC-d9yB64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "327198659484-ltk6fhp8e2043go7u3cpd1r79dttj99p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
