@@ -2,9 +2,18 @@ package project.project;
 
 public class member {
     String title, url;
+    Double timestamp;
 
     public member() {
 
+    }
+
+    public Double getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Double timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getTitle() {
