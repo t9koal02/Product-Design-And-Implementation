@@ -4,9 +4,13 @@ import serial
 import pyrebase
 import subprocess
 import requests
+import time
 from picamera import PiCamera
 from time import sleep
 from time import strftime
+
+def current_milli_time():
+    return round(time.time() * 1000)
 
 if __name__ == '__main__':
     serConn = serial.Serial('/dev/ttyACM0', baudrate=9600, timeout=5)  # Avataan sarjayhteys Arduinolle
@@ -39,6 +43,7 @@ if __name__ == '__main__':
                         date = datetime.datetime.now().strftime('%d-%m-%Y_%H.%M.%S') # Haetaan päivä ja aika  
                         filename1 = date + '.h264'  # Tehdään kaksi eri nimi muuttujaa eri muotoisille videoille
                         filename2 = date + '.mp4'
+                        millis = current_milli_time()
                         print("video alkaa")
                         # Videon kuvaaminen ja tallentaminen oikeaan sijaintiin Raspberryllä:
                         camera.start_preview()
@@ -58,7 +63,7 @@ if __name__ == '__main__':
                         storage.child(filename2).put(filename2)  # Video Firebaseen
                         url = storage.child(filename2).get_url(None)  # Haetaan Storagesta videon URL
                     
-                        data = {'title':filename2, 'url':url}  # Tallenetaan muuttujaan videon nimi ja url
+                        data = {'title':date, 'url':url, 'timestamp':millis}  # Tallenetaan muuttujaan videon nimi ja url
                         database.child("video").push(data)  # Pusketaan data realtime databaseen
                         sleep(0.01)
                         # Videot (.h264 ja .mp4) poistetaan Raspberryltä:
@@ -76,4 +81,6 @@ if __name__ == '__main__':
                 muuttuja = True
     else:
         print("Serial connection is not available.")
+        
+
     
