@@ -40,6 +40,13 @@
                 app:resize_mode="fill"
                 android:layout_gravity="center"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Download"
+                android:textSize="18sp"
+                android:id="@+id/btn_download" />
+
         </LinearLayout>
 
     </FrameLayout>

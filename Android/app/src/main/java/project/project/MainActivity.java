@@ -1,6 +1,8 @@
 package project.project;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Mrecyclerview.setLayoutManager(new LinearLayoutManager(this));
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("video");
+
+        //reference.orderByChild("timestamp").limitToLast(10);
     }
     @Override
     protected void onStart() {
