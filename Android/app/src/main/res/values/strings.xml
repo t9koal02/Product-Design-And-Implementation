@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">project</string>
+    <string name="app_name">Valvontakamera</string>
+    <string name="button_name">Lataa</string>
 </resources>
