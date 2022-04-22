@@ -42,13 +42,14 @@ if __name__ == '__main__':
                         # Videon nimeksi tulee päivämäärä ja kellonaika:
                         date = datetime.datetime.now().strftime('%d-%m-%Y_%H.%M.%S') # Haetaan päivä ja aika  
                         filename1 = date + '.h264'  # Tehdään kaksi eri nimi muuttujaa eri muotoisille videoille
-                        filename2 = date + '.mp4'
+                        filename2 = date + '.mp4'  # Filename mp4 tiedostoa varten
+                        filename3 = 'Varasto: ' + date # Videon otsikko android-sovelllusta varten
                         millis = current_milli_time()
                         print("video alkaa")
                         # Videon kuvaaminen ja tallentaminen oikeaan sijaintiin Raspberryllä:
                         camera.start_preview()
                         camera.start_recording('/home/pi/Product-Design-And-Implementation/Python/' + filename1)  # PiCamera tukee .h264 -formaattia
-                        sleep(5)
+                        sleep(30)
                         camera.stop_recording()
                         camera.stop_preview()
                         print("video loppuu")
@@ -58,12 +59,12 @@ if __name__ == '__main__':
                         subprocess.Popen(command)
                         
                         muuttuja = False
-                        sleep(0.55)  # Videon muuntaminen kestää yli 0,5 sekuntia. Jos ei viivästytetä videon siirtäminen Firebaseen ei onnistu
+                        sleep(4)  # Videon muuntaminen kestää jonkin aikaa sen koosta riippuen. Jos ei viivästytetä videon siirtäminen Firebaseen ei onnistu
                         
                         storage.child(filename2).put(filename2)  # Video Firebaseen
                         url = storage.child(filename2).get_url(None)  # Haetaan Storagesta videon URL
                     
-                        data = {'title':date, 'url':url, 'timestamp':millis}  # Tallenetaan muuttujaan videon nimi ja url
+                        data = {'title':filename3, 'url':url, 'timestamp':millis}  # Tallenetaan muuttujaan videon nimi ja url
                         database.child("video").push(data)  # Pusketaan data realtime databaseen
                         sleep(0.01)
                         # Videot (.h264 ja .mp4) poistetaan Raspberryltä:
