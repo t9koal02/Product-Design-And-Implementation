@@ -43,7 +43,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Download"
+                android:text="@string/button_name"
                 android:textSize="18sp"
                 android:id="@+id/btn_download" />
 
